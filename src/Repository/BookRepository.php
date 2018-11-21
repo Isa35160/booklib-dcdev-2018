@@ -21,12 +21,19 @@ class BookRepository extends ServiceEntityRepository
         parent::__construct($registry, Book::class);
     }
 
-    public function findFirstsAuthorBooks(Author $author, int $limit): Collection
+    public function findFirstsAuthorBooks(Author $author, int $limit, Book $book = null): array
     {
         $qb = $this->createQueryBuilder('b');
 
-        return $qb->where($qb->expr()->eq('b.author', ':author'))
-            ->setParameter(':author', $author)
+        $qb = $qb->innerJoin('b.author', 'a')
+            ->where($qb->expr()->eq('a.id', ':author'));
+
+        if ($book != null) {
+            $qb = $qb->andWhere($qb->expr()->neq('b.id', ':book'))
+                ->setParameter(':book', $book->getId());
+        }
+
+        return $qb->setParameter(':author', $author->getId())
             ->setMaxResults($limit)
             ->getQuery()
             ->getResult();
