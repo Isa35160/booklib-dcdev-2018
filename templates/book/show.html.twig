@@ -38,6 +38,19 @@
 
    </ul>
 
+    <h2>Liste des livres du meme auteur</h2>
+    
+    <ul>
+        {% for otherbook in book.author.books if otherbook.id != book.id %}
+            <li>
+                <a href="{{ path('book_show', {'slug' : otherbook.slug}) }}">
+                    {{ otherbook.title }}
+                </a>
+            </li>
+            {% else %}
+            <p>Aucun autre livre de l'auteur</p>
+        {% endfor %}
+    </ul>
 
 {% endblock %}
 
