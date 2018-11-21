@@ -77,7 +77,7 @@ class Book
     /**
      * @var Author
      *
-     * @ORM\ManyToOne(targetEntity="Author")
+     * @ORM\ManyToOne(targetEntity="Author", inversedBy="books")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="author_id", referencedColumnName="id")
      * })
@@ -100,8 +100,8 @@ class Book
     private $category;
 
     /**
-     * Constructor
-     */
+ * Constructor
+ */
     public function __construct()
     {
         $this->category = new \Doctrine\Common\Collections\ArrayCollection();

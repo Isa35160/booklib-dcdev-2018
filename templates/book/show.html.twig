@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ book.title }}
+{% endblock %}
+
+{% block header %}
+    <header>
+        <ul>
+            <li><a href="">Lorem.</a></li>
+            <li><a href="">Delectus.</a></li>
+            <li><a href="">Necessitatibus?</a></li>
+            <li><a href="">At.</a></li>
+        </ul>
+    </header>
+    <hr>
+{% endblock %}
+
+
+{% block body %}
+
+    <h1>Titre : {{ book.title }} <br> Auteur : {{ book.author.fullname }}</h1>
+    <h2>Référence : {{ book.reference }}</h2>
+    <h3>Crée le {{ book.createdAt|date("d M Y") }}</h3>
+
+    <p>Categories</p>
+   <ul>
+
+       {% for category in book.category %}
+
+           <li><a href="{{ path('category_show', {'id' : category.id}) }}">
+                   {{ category.name }}
+               </a>
+           </li>
+       {% endfor %}
+
+   </ul>
+
+
+{% endblock %}
+
+ {% block footer %}
+     <hr>
+     <footer>
+         <nav>
+             <ul>
+                 <li><a href="">FB</a></li>
+                 <li><a href="">INS</a></li>
+                 <li><a href="">TW</a></li>
+                 <li><a href="">LD</a></li>
+             </ul>
+         </nav>
+     </footer>
+
+ {% endblock %}
