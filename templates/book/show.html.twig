@@ -20,6 +20,8 @@
 {% block body %}
 
     <h1>Titre : {{ book.title }} <br> Auteur : {{ book.author.fullname }}</h1>
+
+    <img src="{{ asset('uploads/' ~ book.image) }}" alt="{{ book.title }}">
     <h2>Référence : {{ book.reference }}</h2>
     <h3>Crée le {{ book.createdAt|date("d M Y") }}</h3>
 
