@@ -6,7 +6,14 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
+
+        {% block header %}
+            <header>HEADER base</header>
+        {% endblock %}
         {% block body %}{% endblock %}
+        {% block footer %}
+           <footer>FOOTER base</footer>
+        {% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
 </html>

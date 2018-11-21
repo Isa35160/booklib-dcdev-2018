@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Author;
 use App\Entity\Book;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -12,23 +13,20 @@ use Symfony\Component\Routing\Annotation\Route;
  * @package App\Controller
  * @Route("/default")
  */
-
-
 class DefaultController extends BaseController
 {
     /**
      * @Route("/{nom}", name="default", methods={"GET"})
      */
-    public function index(string $nom)
-
+    public function index(string $nom, Request $request)
     {
         $author = $this->getDoctrine()->getRepository(Author::class)->findOneByLastname($nom);
 
-        if(!$author) {
-            throw $this->createNotFoundException("Auteur introuvable !");
+        if (!$author) {
+            throw $this->createNotFoundException("Auteur introuvable!");
         }
 
-        return new Response($author->getFirstname() . " " . $author->getLastname());
+        return $this->render("default/index.html.twig", ["author" => $author]);
     }
 
     /**
@@ -39,8 +37,4 @@ class DefaultController extends BaseController
         return new Response($book->getTitle());
     }
 
-
-
 }
-
-
