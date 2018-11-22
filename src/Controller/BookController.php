@@ -21,7 +21,7 @@ class BookController extends BaseController
 
         return $this->render('book/show.html.twig', [
             'book' => $book,
-            'otherbooks' =>$otherbooks
+            'otherbooks' => $otherbooks
         ]);
     }
 }

@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-   <title>{{ book.title }}</title>
+    <title>{{ book.title }}</title>
 {% endblock %}
 
 
@@ -15,20 +15,20 @@
     <h3>Crée le {{ book.createdAt|date("d M Y") }}</h3>
 
     <p>Categories</p>
-   <u
+    <u
 
-           {% for category in book.category %}
+    {% for category in book.category %}
 
-               <li><a href="{{ path('category_show', {'id' : category.id}) }}">
-                       {{ category.name }}
-                   </a>
-               </li>
-           {% endfor %}
+        <li><a href="{{ path('category_show', {'id' : category.id}) }}">
+                {{ category.name }}
+            </a>
+        </li>
+    {% endfor %}
 
-   </ul>
+    </ul>
 
     <h2>Liste des livres du meme auteur</h2>
-    
+
     <ul>
         {% for otherbook in otherbooks %}
             <li>
@@ -36,7 +36,7 @@
                     {{ otherbook.title }}
                 </a>
             </li>
-            {% else %}
+        {% else %}
             <p>Aucun autre livre de l'auteur</p>
         {% endfor %}
     </ul>

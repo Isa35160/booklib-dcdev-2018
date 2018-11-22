@@ -55,30 +55,32 @@
                 <h2>Les derniers livres</h2>
                 <div class="row flex-grow-1">
 
-                        {% for book in books %}
+                    {% for book in books %}
                         <div class="col-sm-6 col-md-4">
                             <div class="card">
-
-                                <img class="card-img-top" src="{{ asset('uploads/' ~ book.image) }}" alt="{{ book.title }}">
+                                <img class="card-img-top" src="{{ asset('uploads/' ~ book.image) }}"
+                                     alt="{{ book.title }}">
                                 <div class="card-body">
                                     <h3>{{ book.title }}</h3>
                                     <div class="book-infos">
-                                        <span class="label label-info"><i class="fa fa-user"></i> {{ book.author.fullname }}</span>
+                                        <span class="label label-info"><i
+                                                    class="fa fa-user"></i> {{ book.author.fullname }}</span>
 
                                         {% for category in book.category %}
-                                            <span class="label label-success"><i class="fa fa-tag"></i> {{ category.name }}</span>
+                                            <span class="label label-success">
+                                                <i class="fa fa-tag"></i> {{ category.name }}
+                                            </span>
                                         {% endfor %}
                                     </div>
-                                    <p><a href="{{ path('book_show', {'slug': book.slug}) }}" class="btn btn-primary" role="button"><i class="fa fa-eye"></i> Voir plus</a>
+                                    <p><a href="{{ path('book_show', {'slug': book.slug}) }}" class="btn btn-primary"
+                                          role="button"><i class="fa fa-eye"></i> Voir plus</a>
                                     </p>
                                 </div>
                             </div>
                         </div>
-                        {% endfor %}
+                    {% endfor %}
                 </div>
             </div>
-
-
 
 
             <div class="col-md-4">
@@ -101,7 +103,8 @@
                                 Angers
                             </a>
                         </div>
-                        <a class="btn btn-primary btn-block" href="#"><i class="fa fa-map"></i> Voir toutes les villes</a>
+                        <a class="btn btn-primary btn-block" href="#"><i class="fa fa-map"></i> Voir toutes les
+                            villes</a>
                     </div>
                 </div>
                 <div class="card">
@@ -131,7 +134,8 @@
                                 Kevin C.
                             </a>
                         </div>
-                        <a class="btn btn-primary btn-block" href="#"><i class="fa fa-users"></i> Voir tous les utilisateurs</a>
+                        <a class="btn btn-primary btn-block" href="#"><i class="fa fa-users"></i> Voir tous les
+                            utilisateurs</a>
                     </div>
                 </div>
             </div>

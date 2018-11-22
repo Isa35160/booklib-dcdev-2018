@@ -10,7 +10,7 @@
     <ul>
         {% for book in author.books %}
             <li><a href="{{ path('book_show', {'slug' : book.slug}) }}">
-                {{ book.title }}
+                    {{ book.title }}
                 </a>
             </li>
         {% endfor %}
