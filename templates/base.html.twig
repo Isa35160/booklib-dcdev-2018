@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     {% block stylesheets %}
-        <link href="{{ asset('build/app.css') }}" type="text/css" rel="stylesheet" />
+        <link href="{{ asset('build/app.css') }}" type="text/css" rel="stylesheet"/>
     {% endblock %}
 
 </head>
@@ -18,7 +18,7 @@
     <header class="container">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
             <div class="container">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="{{ path('homepage') }}">
                 <span class="fa-stack fa-lg">
                     <i class="fa fa-circle fa-stack-2x"></i>
                     <i class="fa fa-book fa-green fa-stack-1x"></i>
@@ -31,22 +31,23 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarDefault">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active"><a class="nav-link" href="#">Accueil</a></li>
+                        <li class="nav-item active"><a class="nav-link" href="{{ path('homepage') }}">Accueil</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Concept</a></li>
                         <li class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-haspopup="true"
                                aria-expanded="false">Catégories <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Roman</a></li>
-                                <li><a class="dropdown-item" href="#">SF</a></li>
-                                <li><a class="dropdown-item" href="#">Histoire</a></li>
-                                <li><a class="dropdown-item" href="#">Thriller</a></li>
-                            </ul>
+
+                                {{ render(controller(
+                                    'App\\Controller\\CategoryController::dropdowncategory'
+                                )) }}
+
                         </li>
                     </ul>
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-haspopup="true" aria-expanded="false">
                             <span class="fa-stack">
                                 <i class="fa fa-circle fa-stack-2x"></i>
                                 <i class="fa fa-user fa-stack-1x"></i>
@@ -78,17 +79,16 @@
 {% endblock %}
 
 
-
 <main>
 
 
-                {% block body %}
-                <body>
+    {% block body %}
+        <body>
 
 
-                </body>
+        </body>
 
-                {% endblock %}
+    {% endblock %}
 
 
 </main>
@@ -103,7 +103,6 @@
     {{ encore_entry_script_tags('app') }}
     <script async defer src="https://maps.googleapis.com/maps/api/js?callback=initBooksMap"></script>
 {% endblock %}
-
 
 
 </body>

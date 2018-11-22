@@ -7,7 +7,7 @@
 
 
 {% block body %}
-
+<section class="container mt-5">
     <h1>Titre : {{ book.title }} <br> Auteur : {{ book.author.fullname }}</h1>
 
     <img src="{{ asset('uploads/' ~ book.image) }}" alt="{{ book.title }}">
@@ -15,7 +15,7 @@
     <h3>Crée le {{ book.createdAt|date("d M Y") }}</h3>
 
     <p>Categories</p>
-    <u
+    <ul>
 
     {% for category in book.category %}
 
@@ -29,18 +29,18 @@
 
     <h2>Liste des livres du meme auteur</h2>
 
-    <ul>
+
         {% for otherbook in otherbooks %}
-            <li>
-                <a href="{{ path('book_show', {'slug' : otherbook.slug}) }}">
-                    {{ otherbook.title }}
-                </a>
-            </li>
+        <div class="row">
+            <div class="col-md-3">
+                    {% include 'book/card.html.twig' with {'book' : otherbook} only %}
+            </div>
+        </div>
         {% else %}
             <p>Aucun autre livre de l'auteur</p>
         {% endfor %}
-    </ul>
 
+</section>
 {% endblock %}
 
 

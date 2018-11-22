@@ -7,21 +7,17 @@
 
 
 {% block body %}
+    <section class="container mt-3">
+        <h1>Liste de la catégorie : {{ category.name }}</h1>
 
-    <h1>Liste de la catégorie : {{ category.name }}</h1>
-
-    <ul>
         {% for book in category.book %}
-            <li>
-
-                <a href="{{ path('book_show', {'slug': book.slug}) }}">
-                    {{ book.title }}</a>
-
-            </li>
+            <div class="row">
+                <div class="col-md-3">
+                    {% include 'book/card.html.twig' with {'book' : book} only %}
+                </div>
+            </div>
         {% endfor %}
-    </ul>
 
-
-
+    </section>
 {% endblock %}
 

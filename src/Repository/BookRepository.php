@@ -43,8 +43,10 @@ class BookRepository extends ServiceEntityRepository
     {
         $qb = $this->createQueryBuilder('b');
 
-        $qb = $qb->setMaxResults($limit)
-            ->orderBy('b.createdAt', 'DESC');
+        $qb = $qb->select('b', 'a')
+            ->innerJoin('b.author', 'a')
+            ->orderBy('b.createdAt', 'DESC')
+            ->setMaxResults($limit);
 
         return $qb->getQuery()->getResult();
     }
