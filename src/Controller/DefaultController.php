@@ -11,10 +11,17 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * Class DefaultController
  * @package App\Controller
- * @Route("/default")
  */
 class DefaultController extends BaseController
 {
+    /**
+     * @Route("/", name="homepage")
+     */
+    public function homepage()
+    {
+        return $this->render('default/homepage.html.twig');
+    }
+
     /**
      * @Route("/{nom}", name="default", methods={"GET"})
      */
