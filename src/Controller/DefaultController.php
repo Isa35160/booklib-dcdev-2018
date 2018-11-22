@@ -19,7 +19,10 @@ class DefaultController extends BaseController
      */
     public function homepage()
     {
-        return $this->render('default/homepage.html.twig');
+        $books = $this->getDoctrine()->getRepository(Book::class)->findAll();
+        return $this->render('default/homepage.html.twig', [
+            "books" => $books
+        ]);
     }
 
     /**

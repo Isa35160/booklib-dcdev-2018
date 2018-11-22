@@ -17,13 +17,13 @@
     <p>Categories</p>
    <u
 
-       {% for category in book.category %}
+           {% for category in book.category %}
 
-           <li><a href="{{ path('category_show', {'id' : category.id}) }}">
-                   {{ category.name }}
-               </a>
-           </li>
-       {% endfor %}
+               <li><a href="{{ path('category_show', {'id' : category.id}) }}">
+                       {{ category.name }}
+                   </a>
+               </li>
+           {% endfor %}
 
    </ul>
 
