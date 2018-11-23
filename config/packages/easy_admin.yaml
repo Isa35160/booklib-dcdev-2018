@@ -1,0 +1,11 @@
+easy_admin:
+    site_name: 'Mon super Admin'
+    design:
+        brand_color: '#1ABC9C'
+    entities:
+        - App\Entity\Author
+        - App\Entity\Book
+        - App\Entity\Box
+        - App\Entity\User
+        - App\Entity\Category
+        - App\Entity\Borrow
