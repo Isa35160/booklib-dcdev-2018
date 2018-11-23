@@ -60,7 +60,7 @@ class Book
     private $createdAt;
 
     /**
-     * @var DateTime|null
+     * @var \DateTime|null
      *
      * @ORM\Column(name="updated_at", type="datetime", nullable=true)
      */
@@ -69,7 +69,7 @@ class Book
     /**
      * @var string
      *
-     * @ORM\Column(name="slug", type="string", length=255, nullable=false)
+     * @ORM\Column(name="slug", type="string", length=190, nullable=false)
      */
     private $slug;
 

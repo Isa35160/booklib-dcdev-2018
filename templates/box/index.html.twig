@@ -1,11 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Box index{% endblock %}
+{% block title %}<title>Box index</title>{% endblock %}
+
 
 {% block body %}
-    <h1>Box index</h1>
-
-    <table class="table">
+    <body class="container mt-5">
+    <a class= "btn btn-dark btn-sm m-2" href="{{ path('box_new') }}">Ajouter une box</a>
+    <table class="table table-sm">
         <thead>
             <tr>
                 <th>Id</th>
@@ -22,15 +23,15 @@
         {% for box in boxes %}
             <tr>
                 <td>{{ box.id }}</td>
-                <td>{{ box.latitude }}</td>
-                <td>{{ box.longitude }}</td>
+                <td>{{ box.latitude|number_format(3, '.', ',') }}</td>
+                <td>{{ box.longitude|number_format(3, '.', ',') }}</td>
                 <td>{{ box.address }}</td>
                 <td>{{ box.zipCode }}</td>
                 <td>{{ box.city }}</td>
                 <td>{{ box.comment }}</td>
                 <td>
-                    <a href="{{ path('box_show', {'id': box.id}) }}">show</a>
-                    <a href="{{ path('box_edit', {'id': box.id}) }}">edit</a>
+                    <a class= "btn btn-sm btn-info m-1" href="{{ path('box_show', {'id': box.id}) }}">show</a>
+                    <a class= "btn btn-sm btn-warning m-1"href="{{ path('box_edit', {'id': box.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
@@ -41,5 +42,7 @@
         </tbody>
     </table>
 
-    <a href="{{ path('box_new') }}">Create new</a>
+
+
+    </body>
 {% endblock %}
