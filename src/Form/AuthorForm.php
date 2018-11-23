@@ -4,10 +4,12 @@
 namespace App\Form;
 
 
+use App\Entity\Author;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 
 class AuthorForm extends AbstractType
@@ -19,6 +21,11 @@ class AuthorForm extends AbstractType
         ->add('firstname', TextType::class)
         ->add('lastname', TextType::class)
         ->add('save', SubmitType::class);
+    }
+
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults(['date_class' => Author::class]);
     }
 
 }
